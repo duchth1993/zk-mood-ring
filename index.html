@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZK Mood Ring — Dynamic PFP NFTs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0c14;
+            --card: #1a1223;
+            --border: #ff2a5c;
+            --text: #e0e0e0;
+            --red: #ff2a5c;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(to right, #ff2a5c, #ffffff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+        .connect {
+            background: var(--card);
+            border: 2px solid rgba(255, 42, 92, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background: var(--red);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .mood {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .pfp {
+            width: 256px;
+            height: 256px;
+            border: 3px solid var(--red);
+            border-radius: 50%;
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+        }
+        .zk-proof {
+            background: rgba(255, 42, 92, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .moods {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .mood-btn {
+            padding: 8px 16px;
+            background: rgba(255, 42, 92, 0.2);
+            color: var(--red);
+            border: 1px solid var(--red);
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">ZK Mood Ring</div>
+            <p>Dynamic PFP NFTs — powered by ZK-verified mood</p>
+        </div>
+
+        <div class="connect">
+            <p>Connect your social accounts to enable mood detection:</p>
+            <div>
+                <button class="btn">💬 Luffa</button>
+                <button class="btn">🐙 GitHub</button>
+                <button class="btn">🐦 X</button>
+            </div>
+            <button class="btn" onclick="analyzeMood()" style="margin-top:15px">
+                🧠 Analyze Mood
+            </button>
+        </div>
+
+        <div class="mood">
+            <div class="pfp" id="pfp">😊</div>
+            <div class="zk-proof" id="proof">
+                🔐 ZK-Proof: Mood "happy" verified from 3 social signals.<br>
+                🧠 No content revealed — only emotional state.
+            </div>
+            <div class="moods">
+                <button class="mood-btn" onclick="setMood('😊', 'happy')">Happy</button>
+                <button class="mood-btn" onclick="setMood('😏', 'sly')">Sly</button>
+                <button class="mood-btn" onclick="setMood('🤩', 'excited')">Excited</button>
+                <button class="mood-btn" onclick="setMood('😌', 'relaxed')">Relaxed</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
